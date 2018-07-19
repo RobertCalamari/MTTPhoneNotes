@@ -8,17 +8,37 @@
 		 <title>Phone Notes</title>
 		 <link href="style2.css" rel="stylesheet">
 	</head>
-	<body>
+	<body >
 	  
-		<div class="header">
-			<div class="menu">
-			</div>
+		
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="https://network3.monmouth.com/xymon/nongreen.html" target="_blank">Xymon/BB Notes</a>
+			<a href="http://tickets.monmouth.com/staff/index.php?_m=core&_a=dashboard" target="_blank">Kayako</a>
+			<a href="https://mtt4.mtt.monmouth.com/ivad/numbers" target="_blank">Numbers</a>
+			<a href="http://rma.ops.monmouth.com/contacts/36212/devices" target="_blank">Devices List</a>
+			<a href="https://www22.verizon.com/wholesale/secure/sso/ws_login/?TYPE=33554433&REALMOID=06-816e3aff-eebb-108f-9d2c-85170386ff19&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=tq1AzbHwdMdEst0ALfCOikNk4iQijrZSzNLfQcyYmIHjgOaPkTdkxlGiXETJZ7va&TARGET=$SM$https%3a%2f%2fwww22%2everizon%2ecom%2fwholesale%2fsecure%2fsystems%2fvtag%2fVTAGLogin" target="_blank">Verizon</a>
+			<a href="https://noctech.monmouth.com/hardware/How_to_login_v1-2.1.2018.pdf" target="_blank">How To Login</a>
+			<a href="http://mtt4.monmouth.com/billing/contacts/search" target="_blank">Dacs/Tellabs Lookup</a>
+			<a href="https://hosted.monmouth.com/hop_panel" target="_blank">HOP Panel</a>
+			<a href="https://noctech.monmouth.com/" target="_blank">NocTech</a>
+		</div>		
+
+		<div class="header">	
+			<div class="menu" >	
+				
+			</div>			
 			<div class="title">
-				<h2>Phone Call Answering Notes</h2>
+				<h2>Phone Answering Notes</h2>
 			</div>
+			<div class="menu">
+				<img src="hambmenuw.png" class="menubutt" alt="Menu Pic" height="50" width="42" onclick="openNav()"> 
+				<!---<span onclick="openNav()">open</span>--->
+			</div>	
 		</div>
-		<div class="content" >
-			<label style="color:white;font-weight:bold;">"Monmouth Telecom, Robert speaking, How can I
+
+		<div class="content" onclick="closeNav()">
+			<label style="color:white;font-weight:bold;">"Monmouth Telecom, <i>Name</i> speaking, How can I
 			help you?"</label><br><br>
 
 			<table style="padding-left:200px;">
@@ -58,12 +78,33 @@
 				</tr>
 			</table>
 			<br>
-
-			<input type="file" class="button2" id="fileToLoad"><br>
-			<button type="button" class="button1" id="saveinfo" onclick="saveInfo();">Save</button>
-			<button type="button" class="button1" id="clearall" onclick="clearAll();">Clear</button>
 			
+
+			<table style="padding-left:300px;">
+				<tr>
+					<td><input type="button" class="button2" id="loadFileXml" value="Load File" onclick="uploadclick();" /></td>
+					<td><label style="color:white" id="filelabel"></label></td>
+				</tr>
+			</table>
+			<input type="file" class="button2" style="display:none;" id="fileToLoad"><br>
+
+			<button type="button" class="button1" id="saveinfo" onclick="saveInfo();">Save</button>
+			<button type="button" class="button1" id="clearall" onclick="clearAll();">Clear</button><br><br>
 		</div>
+		<div class="bottomheader">	
+			<div class="menu" >	
+				
+			</div>			
+			<div class="title">
+							<label style="color:white">To save, please select the appropiate file (it will be todays 
+							date. If todays date is not there, select nothing then) After selecting the file 
+							click save and overwrite if it says to.</label> 
+			</div>
+			<div class="menu">
+				
+			</div>				
+
+		</div>	
 	</body>
 
 <html>
@@ -75,6 +116,7 @@
 
 
 <script>
+
 	custNameText = document.getElementById("custname");
 	compNameText = document.getElementById("compname");
 	issuesText = document.getElementById("issues");
@@ -82,6 +124,8 @@
 	xymonIdText = document.getElementById("xymonid");
 	kayakoIdText = document.getElementById("kayakoid");
 	contactInfoText = document.getElementById("continfo");
+	fileLabel = document.getElementById("filelabel");
+	fileT = document.getElementById("fileToLoad");
 
 	function clearAll() {
 		custNameText.value="";
@@ -93,6 +137,16 @@
 		contactInfoText.value="";
 
 	}
+
+
+
+	function uploadclick() {
+		fileT.click();
+		//fileLabel.innerHTML=fileT.click();
+	}
+	fileT.onchange = function () {
+    	fileLabel.innerHTML = this.value.substr(12);
+ 	};
 
 
 	function saveInfo() {
@@ -146,45 +200,32 @@
 		
 	}
 
+	var menuopen=false;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*function download(data, filename, type) {
-		var file = new Blob([data], {type: type});
-		if (window.navigator.msSaveOrOpenBlob) // IE10+
-			window.navigator.msSaveOrOpenBlob(file, filename);
-		else { // Others
-			var a = document.createElement("a"),
-				    url = URL.createObjectURL(file);
-			a.href = url;
-			a.download = filename;
-			document.body.appendChild(a);
-			a.click();
-			setTimeout(function() {
-				document.body.removeChild(a);
-				window.URL.revokeObjectURL(url);  
-			}, 0); 
+	/* Set the width of the side navigation to 250px */
+	function openNav() {
+		if(menuopen==false){
+			document.getElementById("mySidenav").style.width = "250px";
+			menuopen=true;
 		}
-	}*/
+		else
+		{
+			document.getElementById("mySidenav").style.width = "0";
+			menuopen=false;
+		}
+		
+		
+	}
+
+	/* Set the width of the side navigation to 0 */
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		menuopen=false;
+	} 
+
+
+
+
 
 
 
