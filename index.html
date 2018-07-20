@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		 <title>Phone Notes</title>
+		 <link href="style.css" rel="stylesheet">
+	</head>
+	<body>
+	  
+		
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<label class="sidenavlabel">Quick Links</label>
+			<a href="https://network3.monmouth.com/xymon/nongreen.html" target="_blank">Xymon/BB Notes</a>
+			<a href="http://tickets.monmouth.com/staff/index.php?_m=core&_a=dashboard" target="_blank">Kayako</a>
+			<a href="https://mtt4.mtt.monmouth.com/ivad/numbers" target="_blank">Number Lookup</a>
+			<a href="http://mtt3.monmouth.com/nprash/t1circuits.cgi" target="_blank">T1 Lookup Tool</a>
+			<a href="http://rma.ops.monmouth.com/contacts/36212/devices" target="_blank">Customer Information Portal</a>
+			<a href="https://www22.verizon.com/wholesale/secure/sso/ws_login/?TYPE=33554433&REALMOID=06-816e3aff-eebb-108f-9d2c-85170386ff19&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=tq1AzbHwdMdEst0ALfCOikNk4iQijrZSzNLfQcyYmIHjgOaPkTdkxlGiXETJZ7va&TARGET=$SM$https%3a%2f%2fwww22%2everizon%2ecom%2fwholesale%2fsecure%2fsystems%2fvtag%2fVTAGLogin" target="_blank">Verizon [VTAG]</a>
+			<a href="https://noctech.monmouth.com/hardware/How_to_login_v1-2.1.2018.pdf" target="_blank">How To Login</a>
+			<a href="http://mtt4.monmouth.com/billing/contacts/search" target="_blank">Dacs/Tellabs Lookup</a>
+			<a href="https://hosted.monmouth.com/hop_panel" target="_blank">System Panel</a>
+			<label class="sidenavlabel">Resources</label>
+			<a href="javascript:void(0)" onclick="internalPhones()" >Internal Phones</a>
+			<a href="https://noctech.monmouth.com/" target="_blank">T1 Information</a>
+			<a href="https://network3.monmouth.com/subnet-chart.html" target="_blank">TCP/IP Subnet Chart</a>
+			<a href="https://noctech.monmouth.com/" target="_blank">NocTech</a>
+		</div>		
+
+		<div class="header">	
+			<div class="menu" >	
+				
+			</div>			
+			<div class="title">
+				<a href="index.html" class="titleh2"><h2>Phone Notes</h2></a>
+			</div>
+			<div class="menu">
+				<img src="hambmenuw.png" class="menubutt" alt="Menu Pic" height="50" width="42" onclick="openNav()"> 
+				<!---<span onclick="openNav()">open</span>--->
+			</div>	
+		</div>
+
+		<div class="content" id="contentdiv" onclick="closeNav()">
+			<label style="color:white;font-weight:bold;">"Monmouth Telecom, <i>Name</i> speaking, How can I
+			help you?"</label><br><br>
+
+			<table style="padding-left:200px;">
+				<tr>
+					<td>Customer Name:</td>
+					<td><input id="custname" style="width:230px" type="text" name="firstname" placeholder="Name" value=""></td>
+				</tr>
+				<tr>
+					<td>Company Name:</td>
+					<td><input id="compname" style="width:230px" type="text" name="firstname" placeholder="Company Name" value=""></td>
+				</tr>
+				<tr>
+					<td>Contact Info:</td>
+					<td><input id="continfo" style="width:230px" type="text" name="firstname" placeholder="Phone or Email" value=""></td>
+				</tr>
+			</table>
+
+			<div style="text-align:left;padding-left:125px;">
+			Notes:<br>
+			<textarea id="issues"name="text" placeholder="What issues are they having and what service do the have with us?" style="width: 556px; height: 239px;" wrap="soft"></textarea><br><br>
+			</div>
+
+
+
+			<table style="padding-left:200px;">
+				<tr>
+					<td>Verizon Ticket Number:</td>
+					<td><input id="verizonid" type="text" name="firstname" placeholder="NJNJ######" value=""></td>
+				</tr>
+				<tr>
+					<td>Kayako Ticket Number:</td>
+					<td><input id="kayakoid" type="text" name="firstname" placeholder="######" value=""></td>
+				</tr>
+				<tr>
+					<td>Xymon Account Number:</td>
+					<td><input id="xymonid" type="text" name="firstname" placeholder="#####" value=""></td>
+				</tr>
+			</table>
+			<br>
+			
+
+			<table style="padding-left:300px;">
+				<tr>
+					<td><input type="button" class="button2" id="loadFileXml" value="Load File" onclick="uploadclick();" /></td>
+					<td><label style="color:white" id="filelabel"></label></td>
+				</tr>
+			</table>
+			<input type="file" class="button2" style="display:none;" id="fileToLoad"><br>
+
+			<button type="button" class="button1" id="saveinfo" onclick="saveInfo();">Save</button>
+			<button type="button" class="button1" id="clearall" onclick="clearAll();">Clear</button><br><br>
+		</div>
+
+		<div id="internalphonesdiv" class="content" style="display:none;" onclick="closeNav()">
+			
+			<label style="color:white;font-weight:bold;">Here are some helpful links for when you pickup calls
+					from the internal company phones:</label><br><br>
+			<div class="phonelist">
+				<a href="https://noctech.monmouth.com/internal-phones/internal_phone_information/index.html" target="_blank">Click here to go to the main hub about the internal telephones.</a>
+							
+				<a href="https://noctech.monmouth.com/internal-phones/mtt-phone-numbers.html" target="_blank">Monmouth Telecom Phone Numbers</a>
+				
+				<a href="https://noctech.monmouth.com/internal-phones/current/Monmouth%20Telecom%20Employees%20Extensions-6-26-18.pdf" target="_blank">Extension List</a>
+			
+			</div>
+			
+			<h2 style="color:white;">Quick Notes:</h2>
+			<label style="text-align:left">
+					<b>Warm Transfer:</b> 
+					<br>-Hit Button under xfer to put on hold (You only have a few seconds)
+					<br>-Dial the second persons number or extension
+					<br>-Wait until they pick up and mention you are transfering a call to them
+					<br>-Press the xfer button again to complete tranfer.
+					<br><br>
+					<b>Blind Transfer: </b>
+					<br>-Hit Button under xfer to put on hold (You only have a few seconds)
+					<br>-Dial the second persons number or extension
+					<br>-As you hear the dial tone ring, press the xfer button again to complete tranfer.
+					<br><br>
+					<b>Send to Voicemail: </b>
+					<br>-Press xfer then dial *97 and the extension or number you want to send to
+					<br>-After you hear ringing or the voicemail hit xfer again
+					<br><br>
+					To login in and out of the QUE: *292
+					<br><br>
+					To pick a line: *8(then the extension)	
+				</label>
+
+		</div>
+
+		<div class="bottomheader" onclick="closeNav()">	
+			<div class="menu" >	
+				
+			</div>			
+			<div class="title">
+							<label id="bottomlabel" style="color:white">If you are saving and it is your first entry of the day,
+									do not laod a file. If you already have entered a date in today, then
+									select the file of todays date.</label> 
+			</div>
+			<div class="menu">
+				
+			</div>				
+
+		</div>	
+
+		
+
+
+	</body>
+
+<html>
+
+
+
+
+
+
+
+<script>
+	//Assign names to the elements in the HTML file
+	custNameText = document.getElementById("custname");
+	compNameText = document.getElementById("compname");
+	issuesText = document.getElementById("issues");
+	verizonIdText = document.getElementById("verizonid");
+	xymonIdText = document.getElementById("xymonid");
+	kayakoIdText = document.getElementById("kayakoid");
+	contactInfoText = document.getElementById("continfo");
+	fileLabel = document.getElementById("filelabel");
+	fileT = document.getElementById("fileToLoad");
+
+	phoneD = document.getElementById("internalphonesdiv");
+	contentD = document.getElementById("contentdiv");
+
+	//Clears all of the 
+	function clearAll() {
+		custNameText.value="";
+		compNameText.value="";
+		issuesText.value="";
+		verizonIdText.value="";
+		xymonIdText.value="";
+		kayakoIdText.value="";
+		contactInfoText.value="";
+		fileLabel.innerHTML = "";
+
+	}
+
+
+	function internalPhones() {
+		contentD.style.display = 'none';
+		phoneD.style.display = 'block';
+
+		closeNav();
+
+	}
+
+
+
+
+	function uploadclick() {
+		fileT.click();
+		//fileLabel.innerHTML=fileT.click();
+	}
+	fileT.onchange = function () {
+    	fileLabel.innerHTML = this.value.substr(12);
+ 	};
+
+
+	function saveInfo() {
+
+		data="Xymon Acct Number:   " + xymonIdText.value + "\r\n" + "Customer Name:       " + custNameText.value+ "\r\n" + "Company Name:        " + compNameText.value + "\r\n" + "Contact Info:        " + contactInfoText.value + "\r\n" + "Verizon Number:      " + verizonIdText.value + "\r\n" + "Kyoku Ticket Number: " + kayakoIdText.value + "\r\n" + "Notes: " + "\r\n" + issuesText.value + "\r\n"; 
+		var d = new Date();
+		filename=d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
+
+		loadFileAsText(data,filename);
+		
+	}
+
+
+	function saveTextAsFile(data,filename)
+	{
+
+		var textToSave = data;
+		var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+		var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+		var fileNameToSaveAs = filename;
+	 
+		var downloadLink = document.createElement("a");
+		downloadLink.download = fileNameToSaveAs;
+		downloadLink.innerHTML = "Download File";
+		downloadLink.href = textToSaveAsURL;
+		downloadLink.onclick = destroyClickedElement;
+		downloadLink.style.display = "none";
+		document.body.appendChild(downloadLink);
+	 	fileLabel.innerHTML = "";
+		downloadLink.click();
+	}
+	 
+	function destroyClickedElement(event)
+	{
+		document.body.removeChild(event.target);
+	}
+	var alerted =false;
+	var fileToLoad;
+	function loadFileAsText(data,filename)
+	{
+		fileToLoad = document.getElementById("fileToLoad").files[0];
+
+		var fileReader = new FileReader();
+		fileReader.onload = function(fileLoadedEvent) 
+		{
+		    var textFromFileLoaded = fileLoadedEvent.target.result;
+		    data = textFromFileLoaded + "\r\n" + "------------------------------------------------------------------------------------------------------------" + "\r\n" +  data;
+			saveTextAsFile(data,filename);
+			
+		};
+
+		if(fileToLoad==null || fileLabel.innerHTML == "")
+		{
+			if(alerted==false)
+			{
+				alert("You have not selected a file. This will overwrite todays file if one is already created. If this is your first entry today then please click save again.");
+				alerted=true;			
+			}
+			else
+			{
+				alerted=false;
+				data = "\r\n" + "------------------------------------------------------------------------------------------------------------" + "\r\n" +  data;
+				saveTextAsFile(data,filename);
+				
+			}
+
+		}
+		else
+		{
+			fileReader.readAsText(fileToLoad, "UTF-8");
+			alerted=false;
+		}
+		
+	}
+
+	var menuopen=false;
+
+	/* Set the width of the side navigation to 250px */
+	function openNav() {
+		if(menuopen==false){
+			document.getElementById("mySidenav").style.width = "250px";
+			menuopen=true;
+		}
+		else
+		{
+			document.getElementById("mySidenav").style.width = "0";
+			menuopen=false;
+		}
+		
+		
+	}
+
+	/* Set the width of the side navigation to 0 */
+	function closeNav() {
+		document.getElementById("mySidenav").style.width = "0";
+		menuopen=false;
+	} 
+
+
+
+
+
+
+
+
+</script>
+
