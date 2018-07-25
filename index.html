@@ -14,20 +14,21 @@
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<label class="sidenavlabel">Quick Links</label>
-			<a href="https://network3.monmouth.com/xymon/nongreen.html" target="_blank">Xymon/BB Notes</a>
 			<a href="http://tickets.monmouth.com/staff/index.php?_m=core&_a=dashboard" target="_blank">Kayako</a>
+			<a href="https://network3.monmouth.com/xymon/nongreen.html" target="_blank">Xymon/BB Notes</a>
 			<a href="https://mtt4.mtt.monmouth.com/ivad/numbers" target="_blank">Number Lookup</a>
 			<a href="http://mtt3.monmouth.com/nprash/t1circuits.cgi" target="_blank">T1 Lookup Tool</a>
-			<a href="http://rma.ops.monmouth.com/contacts/36212/devices" target="_blank">Customer Information Portal</a>
 			<a href="https://www22.verizon.com/wholesale/secure/sso/ws_login/?TYPE=33554433&REALMOID=06-816e3aff-eebb-108f-9d2c-85170386ff19&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=tq1AzbHwdMdEst0ALfCOikNk4iQijrZSzNLfQcyYmIHjgOaPkTdkxlGiXETJZ7va&TARGET=$SM$https%3a%2f%2fwww22%2everizon%2ecom%2fwholesale%2fsecure%2fsystems%2fvtag%2fVTAGLogin" target="_blank">Verizon [VTAG]</a>
+			<a href="http://rma.ops.monmouth.com/contacts/36212/devices" target="_blank">Customer Information Portal</a>
+			<a href="http://mtt4.monmouth.com/billing/contacts/search" target="_blank">Dacs/Tellabs Lookup</a>			
 			<a href="https://noctech.monmouth.com/hardware/How_to_login_v1-2.1.2018.pdf" target="_blank">How To Login</a>
-			<a href="http://mtt4.monmouth.com/billing/contacts/search" target="_blank">Dacs/Tellabs Lookup</a>
 			<a href="https://hosted.monmouth.com/hop_panel" target="_blank">System Panel</a>
+			<a href="https://www.mi-webmail.com/rc/?_task=mail&_mbox=Noc" target="_blank">Webmail</a>
 			<label class="sidenavlabel">Resources</label>
-			<a href="javascript:void(0)" onclick="internalPhones()" >Internal Phones</a>
-			<a href="https://noctech.monmouth.com/" target="_blank">T1 Information</a>
-			<a href="https://network3.monmouth.com/subnet-chart.html" target="_blank">TCP/IP Subnet Chart</a>
 			<a href="https://noctech.monmouth.com/" target="_blank">NocTech</a>
+			<a href="javascript:void(0)" onclick="internalPhones()" >Internal Phones</a>
+			<a href="https://noctech.monmouth.com/t1/index.html" target="_blank">T1 Information</a>
+			<a href="https://network3.monmouth.com/subnet-chart.html" target="_blank">TCP/IP Subnet Chart</a>
 		</div>		
 
 		<div class="header">	
@@ -103,11 +104,11 @@
 			<label style="color:white;font-weight:bold;">Here are some helpful links for when you pickup calls
 					from the internal company phones:</label><br><br>
 			<div class="phonelist">
-				<a href="https://noctech.monmouth.com/internal-phones/internal_phone_information/index.html" target="_blank">Click here to go to the main hub about the internal telephones.</a>
+				<u><a href="https://noctech.monmouth.com/internal-phones/internal_phone_information/index.html" target="_blank">Click here to go to the main hub about the internal telephones.</a></u>
 							
-				<a href="https://noctech.monmouth.com/internal-phones/mtt-phone-numbers.html" target="_blank">Monmouth Telecom Phone Numbers</a>
+				<u><a href="https://noctech.monmouth.com/internal-phones/mtt-phone-numbers.html" target="_blank">Monmouth Telecom Phone Numbers</a></u>
 				
-				<a href="https://noctech.monmouth.com/internal-phones/current/Monmouth%20Telecom%20Employees%20Extensions-6-26-18.pdf" target="_blank">Extension List</a>
+				<u><a href="https://noctech.monmouth.com/internal-phones/current/Monmouth%20Telecom%20Employees%20Extensions-6-26-18.pdf" target="_blank">Extension List</a></u>
 			
 			</div>
 			
@@ -140,9 +141,12 @@
 				
 			</div>			
 			<div class="title">
-							<label id="bottomlabel" style="color:white">If you are saving and it is your first entry of the day,
+							<label id="bottomlabel" style="color:white">
+									If you are saving and it is your first entry of the day,
 									do not laod a file. If you already have entered a date in today, then
-									select the file of todays date.</label> 
+									select the file of todays date.
+
+							</label> 
 			</div>
 			<div class="menu">
 				
@@ -174,7 +178,7 @@
 	contactInfoText = document.getElementById("continfo");
 	fileLabel = document.getElementById("filelabel");
 	fileT = document.getElementById("fileToLoad");
-
+	bottomL = document.getElementById("bottomlabel");
 	phoneD = document.getElementById("internalphonesdiv");
 	contentD = document.getElementById("contentdiv");
 
@@ -196,6 +200,7 @@
 		contentD.style.display = 'none';
 		phoneD.style.display = 'block';
 
+		bottomL.innerHTML="";
 		closeNav();
 
 	}
@@ -214,7 +219,7 @@
 
 	function saveInfo() {
 
-		data="Xymon Acct Number:   " + xymonIdText.value + "\r\n" + "Customer Name:       " + custNameText.value+ "\r\n" + "Company Name:        " + compNameText.value + "\r\n" + "Contact Info:        " + contactInfoText.value + "\r\n" + "Verizon Number:      " + verizonIdText.value + "\r\n" + "Kyoku Ticket Number: " + kayakoIdText.value + "\r\n" + "Notes: " + "\r\n" + issuesText.value + "\r\n"; 
+		data="Xymon Account Number:  " + xymonIdText.value + "\r\n" + "Customer Name:         " + custNameText.value+ "\r\n" + "Company Name:          " + compNameText.value + "\r\n" + "Contact Info:          " + contactInfoText.value + "\r\n" + "Verizon Number:        " + verizonIdText.value + "\r\n" + "Kayako Ticket Number:  " + kayakoIdText.value + "\r\n" + "Notes: " + "\r\n" + issuesText.value + "\r\n"; 
 		var d = new Date();
 		filename=d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
 

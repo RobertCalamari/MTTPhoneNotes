@@ -114,6 +114,12 @@ td, th {
 
 }
 
+.titleh2:hover {
+	cursor: hand;
+    cursor: pointer;
+    opacity: .5;
+
+}
 
 
 a, a:hover, a:active, a:visited, a:focus {
